@@ -12,6 +12,10 @@
                 <router-link class="item" to="/login">
                     Iniciar sesión 
                 </router-link>
+
+                <router-link class="item" to="/CRUDE">
+                    LISTA DE productos
+                </router-link>
             </div>              
         </div>
     </div>  
