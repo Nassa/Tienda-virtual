@@ -8,36 +8,36 @@
                     <h1> AÑADIR PRODUCTO </h1>
                     <label> Codigo </label>
                     <br>
-                    <input v-model="this.products.codigo" type="text" placeholder="00a">
+                    <input v-model="codigo_new" type="text" placeholder="00a">
                     <br>
                     <br>
                     <label> Producto </label>
                     <br>
-                    <input v-model="this.products.producto" type="text"  placeholder="pañoleta tiburon">
+                    <input v-model="producto_new" type="text"  placeholder="pañoleta tiburon">
                     <br>
                     <br>
                     <label> Categoria </label>
                     <br>
-                    <input v-model="this.products.categoria" type="text"  placeholder="pañoletas">
+                    <input v-model="categoria_new" type="text"  placeholder="pañoletas">
                     <br>
                     <br>
                     <label> Talla </label>
                     <br>
-                    <input v-model="this.products.talla" type="text"  placeholder="talla S">
+                    <input v-model="talla_new" type="text"  placeholder="talla S">
                     <br>
                     <br>
                     <label> Cantidad </label>
                     <br>
-                    <input v-model="this.products.cantidad" type="number" id="cantidad" placeholder="10">
+                    <input v-model="cantidad_new" type="number" id="cantidad" placeholder="10">
                     <br>
                     <br>
                     <label> Precio </label>
                     <br>
-                    <input v-model="this.products.precio" type="text"  placeholder="$ 25.000">
+                    <input v-model="precio_new" type="text"  placeholder="$ 25.000">
                 </slot>
                 <br>
                 <br>
-                <button v-on:click= "confirmar" class="positive ui button" :class="{ confirmar }">CONFIRMAR</button>
+                <button v-on:click= "confirmar" class="positive ui button" V->CONFIRMAR</button>
 
                 <button v-on:click= "cancelar" class="negative ui button">CANCELAR</button>
             </div>
@@ -72,7 +72,7 @@
                     </tr>
             </thead>
             <tbody>
-                <tr v-for="producto in this.products" :key="producto._id">
+                <tr v-for="producto in this.productos" :key="producto._id">
                     <td>{{ producto.codigo }}</td>
                     <td>{{ producto.producto }}</td>
                     <td>{{ producto.categoria }}</td>
@@ -105,38 +105,14 @@
 </template>
 
 <script>
-
 import BasicLayouts from '../layouts/BasicLayouts.vue';
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 export default {
     name: 'CRUDE',
     components: {
         BasicLayouts,
     },
-
     setup() {
-        let products = ref({});
-        const router = useRouter();
-        let confirmar = ref(false);
-
-        const inventario = async () => {
-
-            confirmar.value = true
-            try {
-                    const response = await inventario(products.value);
-                    router.push("/CRUDE"); 
-                } catch (error) {
-                    console.log(error);
-                }
-            confirmar.value = false;
-        };
         
-        return {
-            products,
-            inventario,
-            confirmar,
-        };
     },
     data: () => ({
         
@@ -148,7 +124,17 @@ export default {
         codigoActualizar: '',
             // Input edad dentro del formulario de actualizar
         productoActualizar: '',
-
+        productos: [
+            {
+                producto_id: + new Date(), 
+                codigo: "01b",
+                producto: "Pañoleta hamburguesa",
+                categoria: "Pañoletas",
+                talla: "Talla S",
+                cantidad: 4,
+                precio: '$ 24.000',
+            },
+            ], 
         isVisible: false
     }),
     
@@ -158,34 +144,37 @@ export default {
             this.open()
         },
         refresh: function (event) {
-
             this.$forceUpdate();
-
         },
     
         editar() {},
         
         confirmar: function (event) {
-            
+            this.productos.push (
+                
+                {
+                    producto_id: + new Date(),
+                    codigo: this.codigo_new,
+                    producto: this.producto_new,
+                    categoria: this.categoria_new,
+                    talla: this.talla_new,
+                    cantidad: this.cantidad_new,
+                    precio: this.precio_new,
+                },
+            )
             this.close()
-
-    },
-
+        },
         cancelar: function (event) {
             this.close()
         },
         
         open() {
-            
             this.isVisible = true
             
-            
         },
-
         close() {
             this.isVisible = false
         },
-
         borrarProducto: function (producto_id) {
                 // Borramos de la lista
             this.productos.splice(producto_id, 1);
@@ -193,17 +182,13 @@ export default {
     },
     
     computed: {
-
     }
-
 }
-
 </script>
 
 
 
 <style scoped>
-
 section {
     width: 80%;
     margin: 0 auto;
@@ -215,39 +200,31 @@ section {
     float: left;
     text-align: center;
 }
-
 h1 {
     text-align: center;
 }
-
 label {
     font-style: oblique;
 }
-
 button {
     vertical-align: inherit;
 }
-
 #editar {
     background-color: aqua;
 }
-
 #act {
     background-color:beige;
     width: 12%;
     justify-items: center;
 }
-
 #tabla {
     width: 70%;
     background-color:rgb(205, 228, 228);
 }
-
 tbody {
     background-color: white;
     text-align: center;
 }
-
 .popup-modal {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -259,7 +236,6 @@ tbody {
     display: flex;
     align-items: center;
     z-index: 1; }
-
     .window {
     background: #fff;
     border-radius: 5px;
