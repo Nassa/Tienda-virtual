@@ -3,30 +3,58 @@
         <div class="ui container">
             <div class="left menu">
                 <router-link class="item" to="/">
-                <img class="ui small image" src="../assets/logo.png" alt="Taysu" />
-                <p></p>
-                
+                <img class="ui small image" src="../assets/logo.png" alt="Taysu" />                            
                 </router-link>               
             </div>
             <div class="right menu">
-                <router-link class="item" to="/login">
+                <router-link class="item" to="/login" v-if="!token">
                     Iniciar sesión 
                 </router-link>
+    
+
+                <template v-if="token">
+                    <router-link class="item" to="/orders">Inventario</router-link>
+                    <span class="ui item cart">
+                        <i class="shopping cart icon" @click="openCart"></i>
+                    </span>
+                    <span class="ui item lagout" @click="logout">
+                        <i class="sign-out icon"></i>
+                    </span>
+                </template>
             </div>              
         </div>
     </div>  
 </template>
 
 <script>
+import { getTokenApi, deleteTokenApi } from '../api/token';
 export default {
     name:'Menu',
+
+    setup(){
+        const token = getTokenApi();
+
+        const logout = () => {
+            deleteTokenApi();
+            location.replace('/');
+        };
+
+
+        return {
+            token,
+            logout,
+        };
+    },
+
+
+
 
 };
 </script>
 
 <style lang="scss" scoped>
 .ui.menu.secondary {
-    background-color: #f9f300;
+    background-color: #f9f300;   
 
     .item{
         color: #0a0a0a;
@@ -54,4 +82,7 @@ export default {
     }
 }
 
+
 </style>
+
+
