@@ -8,6 +8,7 @@
                 
                 </router-link>               
             </div>
+
             <div class="right menu">
                 <router-link class="item" to="/login">
                     Iniciar sesión 
@@ -16,6 +17,13 @@
                 <router-link class="item" to="/CRUDE">
                     LISTA DE productos
                 </router-link>
+
+                <div class="item">
+                    <div class="ui icon input">
+                        <input type="text" placeholder="Search...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
             </div>              
         </div>
     </div>  

@@ -127,12 +127,132 @@ export default {
         productos: [
             {
                 producto_id: + new Date(), 
-                codigo: "01b",
+                codigo: "01ph",
                 producto: "Pañoleta hamburguesa",
                 categoria: "Pañoletas",
                 talla: "Talla S",
                 cantidad: 4,
+                precio: '$ 18.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "02ph",
+                producto: "Pañoleta hamburguesa",
+                categoria: "Pañoletas",
+                talla: "Talla M",
+                cantidad: 4,
+                precio: '$ 20.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "03ph",
+                producto: "Pañoleta hamburguesa",
+                categoria: "Pañoletas",
+                talla: "Talla L",
+                cantidad: 2,
                 precio: '$ 24.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "01am",
+                producto: "Arnes Militar",
+                categoria: "Arneses",
+                talla: "Talla M",
+                cantidad: 5,
+                precio: '$ 35.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "01bd",
+                producto: "Buso dinosaurio",
+                categoria: "busos",
+                talla: "Talla s",
+                cantidad: 5,
+                precio: '$ 35.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "04ps",
+                producto: "Pañoleta Stich",
+                categoria: "Pañoletas",
+                talla: "Talla s",
+                cantidad: 6,
+                precio: '$ 18.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "05ps",
+                producto: "Pañoleta Stich",
+                categoria: "Pañoletas",
+                talla: "Talla M",
+                cantidad: 4,
+                precio: '$ 20.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "06ps",
+                producto: "Pañoleta Stich",
+                categoria: "Pañoletas",
+                talla: "Talla L",
+                cantidad: 2,
+                precio: '$ 24.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "07pb",
+                producto: "Pañoleta Bombones",
+                categoria: "Pañoletas",
+                talla: "Talla s",
+                cantidad: 1,
+                precio: '$ 18.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "08pb",
+                producto: "Pañoleta Bombones",
+                categoria: "Pañoletas",
+                talla: "Talla M",
+                cantidad: 1,
+                precio: '$ 20.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "08pb",
+                producto: "Pañoleta Bombones",
+                categoria: "Pañoletas",
+                talla: "Talla L",
+                cantidad: 1,
+                precio: '$ 24.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "02bc",
+                producto: "Buso conejo",
+                categoria: "busos",
+                talla: "Talla s",
+                cantidad: 3,
+                precio: '$ 35.000',
+            },
+
+            {
+                producto_id: + new Date(), 
+                codigo: "03bs",
+                producto: "Taysu Shark Buso",
+                categoria: "Busos",
+                talla: "Talla s",
+                cantidad: 2,
+                precio: '$ 35.000',
             },
             ], 
         isVisible: false
