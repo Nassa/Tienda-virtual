@@ -28,6 +28,7 @@
                     <router-link class="item" to="/orders">Inventario</router-link>
                     <span class="ui item cart">
                         <i class="shopping cart icon" @click="openCart"></i>
+                    </span>
                     <span class="ui item lagout" @click="logout">
                         <i class="sign-out icon"></i>
                     </span>
@@ -38,42 +39,28 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { useStore } from 'vuex';
 import { getTokenApi, deleteTokenApi } from '../api/token';
-import { getCategoriesApi } from '../api/category';
-
 export default {
     name:'Menu',
 
     setup(){
-        let categories = ref(null);
         const token = getTokenApi();
-        const store = useStore();
-        onMounted(async () => {
-        const response = await getCategoriesApi();
-        categories.value = response;
-        });        
-
 
         const logout = () => {
             deleteTokenApi();
             location.replace('/');
         };
 
-        const openCart = () => {
-            store.commit('setShowCart', true);
-        };
-
-
 
         return {
             token,
             logout,
-            categories,
-            openCart,
         };
     },
+
+
+
+
 };
 </script>
 
