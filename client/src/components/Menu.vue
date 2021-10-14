@@ -5,13 +5,14 @@
                 <router-link class="item" to="/">
                 <img class="ui small image" src="../assets/logo.png" alt="Taysu" />                            
                 </router-link>                    
+
+                
             </div>
 
             <div class="right menu">
                 <router-link class="item" to="/login" v-if="!token">
                     Iniciar sesión 
                 </router-link>
-
                 <router-link class="item" to="/CRUDE">
                     LISTA DE productos
                 </router-link>
@@ -24,14 +25,12 @@
                 </div>
 
                 <template v-if="token">
-
+                    <router-link class="item" to="/orders">Inventario</router-link>
                     <span class="ui item cart">
                         <i class="shopping cart icon" @click="openCart"></i>
-                    </span>
                     <span class="ui item lagout" @click="logout">
                         <i class="sign-out icon"></i>
                     </span>
-                </template>
                 </template>
             </div>              
         </div>
